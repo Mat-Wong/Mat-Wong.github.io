@@ -346,9 +346,9 @@
     <li><span class="news-date">Oct 2026</span><span class="news-item">Presenting <em>Collusion in the Cards</em> at the INFORMS 10th Workshop on Data Science and at CIST 2026, San Francisco.</span></li>
     <li><span class="news-date">Oct 2026</span><span class="news-item">Presenting <em>Collusion in the Cards</em> at the Workshop on AI and the Future of Collaborative Innovation (WAICI), NYU Stern.</span></li>
     <li><span class="news-date">Sep 2026</span><span class="news-item">Poster of <em>Collusion in the Cards</em> at NC Analytics and AI Day, INFORMS North Carolina Chapter.</span></li>
-    <li><span class="news-date">Jul 2026</span><span class="news-item">Started <em>Seeing and Hearing the Pitch</em> with Kunpeng Zhang (University of Maryland) and Yusen Xia (Georgia State University).</span></li>
-    <li><span class="news-date">Feb 2026</span><span class="news-item">Started <em>Collusion in the Cards</em> with Kan Xu (Arizona State University).</span></li>
-    <li><span class="news-date">Aug 2025</span><span class="news-item">Won First Prize (top 0.13%, student category) at the AEJMC 108th Annual Conference, San Francisco, for <em>Case Study of Chinese Short-Drama Overseas Platform</em>.</span></li>
+    <li><span class="news-date">Jul 2026</span><span class="news-item">Started <em>Seeing and Hearing the Pitch</em> with <a href="https://kpzhang.github.io/" target="_blank" rel="noopener">Kunpeng Zhang</a> (University of Maryland) and <a href="https://robinson.gsu.edu/profile/yusen-xia/" target="_blank" rel="noopener">Yusen Xia</a> (Georgia State University).</span></li>
+    <li><span class="news-date">Feb 2026</span><span class="news-item">Started <em>Collusion in the Cards</em> with <a href="https://kanxu526.github.io/" target="_blank" rel="noopener">Kan Xu</a> (Arizona State University).</span></li>
+    <li><span class="news-date">Aug 2025</span><span class="news-item">Won First Prize (top 0.13%, student category) at the AEJMC 108th Annual Conference, San Francisco, for <em>Localized vs. Translated Micro-Short Dramas</em>.</span></li>
   </ul>
 </section>
 
@@ -358,7 +358,7 @@
   <div class="card">
     <h3>Collusion in the Cards: AI Detection and Explanation with LLMs</h3>
     <p class="meta">Feb 2026 &ndash; Present</p>
-    <p class="collab">Advisor: Kan Xu, Arizona State University</p>
+    <p class="collab">Advisor: <a href="https://kanxu526.github.io/" target="_blank" rel="noopener">Kan Xu</a>, Arizona State University</p>
     <p><strong>Problem.</strong> Online card-game platforms must adjudicate collusion reports case by case: every move can be legal while coordinated intent surfaces only across the sequence. Labels come from 171 volunteer reviewers who disagree on 39% of 8,553 games, and an 84% positive prior makes accuracy uninformative.</p>
     <p><strong>Model.</strong> Designed VERA, a Qwen2.5-7B architecture that separates evidence from judgment: a rule-grounded analyst (rule-cloze SFT, then distillation on 501 teacher-annotated games) reconstructs each game from the log alone, while the player report bypasses it and enters a trained adjudicator. Proposed reviewer-aware weighted SFT: a cross-attention network over game, report and review embeddings, reviewer histories and vote structure learns a positive weight for each training case.</p>
     <p><strong>Results &amp; contribution.</strong> On 500 test and 1,000 out-of-sample cases, VERA reaches 0.491 and 0.492 MCC, against 0.343 and 0.245 for a prompted frontier model and 0.424 and 0.420 for the best embedding classifier. Analysis helps only once the adjudicator is task-trained; reviewer weighting gains most out of sample, and needs no human review at inference.</p>
@@ -367,20 +367,22 @@
   <div class="card">
     <h3>Seeing and Hearing the Pitch: Multimodal Signals in IPO Roadshows and Underpricing</h3>
     <p class="meta">Jul 2026 &ndash; Present</p>
-    <p class="collab">Advisor: Kunpeng Zhang, University of Maryland and Yusen Xia, Georgia State University</p>
+    <p class="collab">Advisor: <a href="https://kpzhang.github.io/" target="_blank" rel="noopener">Kunpeng Zhang</a>, University of Maryland and <a href="https://robinson.gsu.edu/profile/yusen-xia/" target="_blank" rel="noopener">Yusen Xia</a>, Georgia State University</p>
     <p><strong>Problem.</strong> Does how executives present in IPO roadshows, beyond the prospectus, carry information the market prices?</p>
     <p><strong>Model.</strong> Built a corpus of 600 STAR Market roadshows (599 firms, 18,560 sentences) with timestamped speech recognition, LDA topic segmentation, and sentence-aligned acoustic, facial, gesture and scene features; screened 749 features against 8 underpricing measures with time-based splits and global FDR control.</p>
     <p><strong>Results &amp; contribution.</strong> The chairman's time share on technology and R&amp;D content is the only presentation feature that survives global correction (r = &minus;0.16, q = 0.03), with the same sign before and after the 2023 IPO tightening; dispersion of investor questions in the online Q&amp;A raises out-of-sample R&sup2; from 0.091 to 0.128. Ongoing.</p>
   </div>
 
   <div class="card">
-    <h3>Case Study of Chinese Short-Drama Overseas Platform</h3>
+    <h3>Localized vs. Translated Micro-Short Dramas: Revenue, Platform Strategy and Cultural Adaptation of Chinese Short-Drama Apps Overseas</h3>
     <p class="meta">Mar 2025 &ndash; Aug 2025 &middot; Shenzhen, China and San Francisco, USA</p>
     <p class="collab">Advisor: Yangjuan Hu, PHBS &middot; First Prize (top 0.13%), Student Category, AEJMC 108th Annual Conference</p>
-    <p><strong>Problem.</strong> What drives the overseas revenue of Chinese short-drama platforms, using DramaBox and ReelShort as cases.</p>
-    <p><strong>Model.</strong> Built a platform revenue elasticity model based on a Cobb&ndash;Douglas production function to quantify the revenue of DramaBox and ReelShort.</p>
-    <p><strong>Results &amp; contribution.</strong> Presented the case at the AEJMC 108th Annual Conference in San Francisco, including an impromptu oral report in English, and won First Prize in the student category.</p>
+    <p><strong>Problem.</strong> How the two leading Chinese short-drama apps expand overseas&mdash;ReelShort mainly through localized productions, DramaBox mainly through translated Chinese dramas&mdash;and how these strategies shape their revenue.</p>
+    <p><strong>Model.</strong> Compared content mix, viewership, regional revenue and retention of the two platforms, and estimated a Cobb&ndash;Douglas revenue model, Revenue = &beta;<sub>0</sub>&middot;MAU<sup>&beta;<sub>1</sub></sup>&middot;ARPDAU<sup>&beta;<sub>2</sub></sup>, in logs; residual tests (autocorrelation, heteroskedasticity, non-normality) led to GLS re-estimation.</p>
+    <p><strong>Results &amp; contribution.</strong> DramaBox (87.7% translated) earns more at the same user scale and monetization (&beta;<sub>0</sub> 1.29 vs. 1.17) and its revenue grows more than one-for-one with users (MAU elasticity 1.15 vs. 0.73), consistent with broader cross-cultural appeal; ReelShort&rsquo;s localized hits drive 93% of its views but concentrate 72% of revenue in North America. Payment elasticities below one for both (0.33 vs. 0.18; all at the 1% level) point to weak monetization.</p>
+    <p class="link-row"><a href="assets/short_drama_slides.pdf" target="_blank" rel="noopener">Slides (PDF)</a></p>
   </div>
+
 
   <div class="card">
     <h3>Conditional Random Fields for Sequential Consumer Choice</h3>
@@ -426,7 +428,7 @@
     <li>NC Analytics and AI Day, INFORMS North Carolina Chapter (poster) <span class="venue-date">&mdash; Sep 2026</span></li>
     <li>PHBS AIEM 2026, Peking University HSBC Business School <span class="venue-date">&mdash; 2026</span></li>
   </ol>
-  <p class="collab" style="margin:16px 0 12px;">On <em>Case Study of Chinese Short-Drama Overseas Platform</em></p>
+  <p class="collab" style="margin:16px 0 12px;">On <em>Localized vs. Translated Micro-Short Dramas</em></p>
   <ol class="presentations">
     <li>AEJMC 108th Annual Conference, San Francisco (First Prize, Student Category) <span class="venue-date">&mdash; Aug 2025</span></li>
   </ol>
@@ -489,12 +491,42 @@
     </ul>
   </div>
 
-  <h3 class="exp-subhead">Earlier internships</h3>
-  <ul class="internships">
-    <li><span>Strategy Operations Intern, E-commerce &mdash; ByteDance, Shanghai</span><span class="intern-dates">Feb 2024 &ndash; Jun 2024</span></li>
-    <li><span>FOF Quantitative Research Intern &mdash; Industrial Bank Wealth Management</span><span class="intern-dates">Oct 2023 &ndash; 2024</span></li>
-    <li><span>Equity Research Intern &mdash; Haitong Securities</span><span class="intern-dates">Jul 2022 &ndash; Sep 2022</span></li>
-  </ul>
+  <div class="exp-entry">
+    <div class="entry-head">
+      <h3>TikTok Shop, ByteDance &mdash; Cross-border Brand Promotions</h3>
+      <span class="dates">Feb 2024 &ndash; Jun 2024</span>
+    </div>
+    <p class="entry-sub">Strategy Operations Intern &middot; Shanghai, China</p>
+    <ul>
+      <li>Ran 50+ cross-border and local brand promotions for the Philippine market, selecting core categories by GPM, AOV and CTR and adjusting subsidies by ROAS.</li>
+      <li>Coordinated campaign setup with 30+ local account managers and the design team, and helped host a TikTok Shop &times; AIGC closed-door summit in Shenzhen that matched AIGC providers with Philippine merchants.</li>
+    </ul>
+  </div>
+
+  <div class="exp-entry">
+    <div class="entry-head">
+      <h3>CIB Wealth Management &mdash; Equity Investment Department</h3>
+      <span class="dates">Oct 2023 &ndash; Feb 2024</span>
+    </div>
+    <p class="entry-sub">FOF Research Intern</p>
+    <ul>
+      <li>Backtested and tuned CPPI and risk-parity strategies, and tested low-P/B micro-cap funds for excess returns at the 1% significance level.</li>
+      <li>Wrote Python tools for fund-research dashboards (A-share liquidity, monthly report extraction, equity fund screening), cutting routine research time by over 90%.</li>
+    </ul>
+  </div>
+
+  <div class="exp-entry">
+    <div class="entry-head">
+      <h3>Haitong Securities Research Institute</h3>
+      <span class="dates">Jun 2022 &ndash; Aug 2022</span>
+    </div>
+    <p class="entry-sub">Industry Research Intern &middot; Shanghai, China</p>
+    <ul>
+      <li>Co-wrote the first in-depth coverage report on Desay SV (002920.SZ), covering its history, organization, main businesses and shareholding structure.</li>
+      <li>From three years of filings, news and company posts, identified the firm&rsquo;s declining customer concentration and argued that intelligent driving had become its second growth curve.</li>
+    </ul>
+  </div>
+
 </section>
 
 <section aria-labelledby="contact-heading">
