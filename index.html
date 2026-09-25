@@ -313,10 +313,10 @@
       <p class="tagline">Master of Finance student, Peking University HSBC Business School</p>
       <p class="applying">Applying to PhD programs in <strong>Information Systems</strong> and <strong>Quantitative Marketing</strong> at U.S. business schools for <strong>Fall 2027</strong>.</p>
       <nav class="links">
-        <a href="mailto:mat0728@stu.pku.edu.cn">Email</a>
+        <a class="email-link" href="mailto:mat0728@stu.pku.edu.cn" title="Click to email (address is also copied)">mat0728@stu.pku.edu.cn</a>
         <a href="cv/Xu_Wang_CV.pdf">CV</a>
         <a href="https://github.com/Mat-Wong">GitHub</a>
-        <a href="https://www.linkedin.com/in/%E6%97%AD-%E7%8E%8B-30438b40a/">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/xu-wang-30438b40a/">LinkedIn</a>
       </nav>
     </div>
   </div>
@@ -500,8 +500,8 @@
 <section aria-labelledby="contact-heading">
   <h2 id="contact-heading">Contact</h2>
   <nav class="links">
-    <a href="mailto:mat0728@stu.pku.edu.cn">Email</a>
-    <a href="https://www.linkedin.com/in/%E6%97%AD-%E7%8E%8B-30438b40a/">LinkedIn</a>
+    <a class="email-link" href="mailto:mat0728@stu.pku.edu.cn" title="Click to email (address is also copied)">mat0728@stu.pku.edu.cn</a>
+    <a href="https://www.linkedin.com/in/xu-wang-30438b40a/">LinkedIn</a>
     <a href="https://github.com/Mat-Wong">GitHub</a>
   </nav>
 </section>
@@ -510,5 +510,18 @@
   Last updated: September 2026
 </footer>
 
+<script>
+document.querySelectorAll('.email-link').forEach(function (a) {
+  a.addEventListener('click', function () {
+    var addr = 'mat0728@stu.pku.edu.cn';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(addr).then(function () {
+        var old = a.textContent; a.textContent = 'Copied: ' + addr;
+        setTimeout(function () { a.textContent = old; }, 1800);
+      }).catch(function () {});
+    }
+  });
+});
+</script>
 </body>
 </html>
