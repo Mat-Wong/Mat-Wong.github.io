@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xu Wang</title>
+<meta name="description" content="Xu Wang — Master of Finance student, Peking University HSBC Business School">
+<style>
+  :root {
+    --accent: #1f4e79;
+    --bg: #fbfaf7;
+    --text: #24262b;
+    --muted: #5a5f66;
+    --border: #e2ddd2;
+    --card-bg: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    line-height: 1.6;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 16px 48px;
+  }
+  header {
+    padding: 40px 0 24px;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 12px;
+  }
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+  }
+  .profile-photo {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    flex: 0 0 auto;
+    display: block;
+  }
+  .header-text {
+    min-width: 0;
+  }
+  h1 {
+    font-size: 2.1rem;
+    margin: 0 0 6px;
+    letter-spacing: 0.02em;
+  }
+  .zh-name {
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    margin-left: 4px;
+  }
+  .tagline {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+  nav.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    font-size: 0.98rem;
+  }
+  nav.links a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  nav.links a:hover,
+  nav.links a:focus {
+    border-bottom-color: var(--accent);
+  }
+  nav.section-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-size: 0.86rem;
+    margin: 18px 0 32px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  nav.section-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  nav.section-nav a:hover,
+  nav.section-nav a:focus {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  @media (max-width: 480px) {
+    .header-top {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .header-text nav.links {
+      justify-content: center;
+    }
+  }
+  section {
+    margin-bottom: 40px;
+  }
+  h2 {
+    font-size: 1.3rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+    margin: 0 0 16px;
+    letter-spacing: 0.03em;
+  }
+  h3 {
+    font-size: 1.08rem;
+    margin: 0 0 2px;
+  }
+  .about p {
+    margin: 0;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-bottom: 18px;
+  }
+  .card:last-child { margin-bottom: 0; }
+  .meta {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0 0 2px;
+  }
+  .collab {
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-style: italic;
+    margin: 0 0 10px;
+  }
+  .card p {
+    margin: 0 0 8px;
+  }
+  .card p:last-child { margin-bottom: 0; }
+  .card p strong {
+    color: var(--accent);
+  }
+  ol.presentations, ul.plain {
+    padding-left: 1.3em;
+    margin: 0;
+  }
+  ol.presentations li, ul.plain li {
+    margin-bottom: 8px;
+  }
+  ol.presentations li:last-child, ul.plain li:last-child { margin-bottom: 0; }
+  .venue-date {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+  .edu-entry, .exp-entry {
+    margin-bottom: 14px;
+  }
+  .edu-entry:last-child, .exp-entry:last-child { margin-bottom: 0; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    align-items: baseline;
+  }
+  .entry-head .dates {
+    color: var(--muted);
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  .entry-sub {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 2px 0 4px;
+  }
+  .exp-entry ul {
+    padding-left: 1.3em;
+    margin: 6px 0 0;
+  }
+  .exp-entry ul li {
+    margin-bottom: 6px;
+  }
+  ul.news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.news-list li {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  ul.news-list li:last-child { margin-bottom: 0; }
+  ul.news-list .news-date {
+    flex: 0 0 68px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+  ul.news-list .news-item {
+    flex: 1 1 auto;
+  }
+  .link-row {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    font-size: 0.92rem;
+  }
+  .link-row a {
+    color: var(--accent);
+  }
+  ul.honors-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.honors-list li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 12px;
+    margin-bottom: 8px;
+  }
+  ul.honors-list li:last-child { margin-bottom: 0; }
+  ul.honors-list li > span:first-child {
+    flex: 1 1 260px;
+    min-width: 0;
+  }
+  ul.honors-list .honor-year {
+    color: var(--muted);
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  .exp-subhead {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 22px 0 10px;
+    letter-spacing: 0.02em;
+  }
+  ul.internships {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.internships li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 12px;
+    margin-bottom: 8px;
+  }
+  ul.internships li:last-child { margin-bottom: 0; }
+  ul.internships li > span:first-child {
+    flex: 1 1 220px;
+    min-width: 0;
+  }
+  ul.internships .intern-dates {
+    color: var(--muted);
+    font-size: 0.88rem;
+    white-space: nowrap;
+    text-align: right;
+  }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.88rem;
+    text-align: center;
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 1.7rem; }
+    header { padding-top: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <img class="profile-photo" src="assets/profile.jpg" alt="Xu Wang">
+    <div class="header-text">
+      <h1>Xu Wang <span class="zh-name">王旭</span></h1>
+      <p class="tagline">Master of Finance student, Peking University HSBC Business School</p>
+      <nav class="links">
+        <a href="mailto:mat0728@stu.pku.edu.cn">Email</a>
+        <a href="cv/Xu_Wang_CV.pdf">CV</a>
+        <a href="https://github.com/MatWang">GitHub</a>
+        <a href="https://www.linkedin.com/in/%E6%97%AD-%E7%8E%8B-30438b40a/">LinkedIn</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<nav class="section-nav" aria-label="Section navigation">
+  <a href="#about-heading">About</a>
+  <a href="#news-heading">News</a>
+  <a href="#research-heading">Research</a>
+  <a href="#earlier-research-heading">Earlier Research</a>
+  <a href="#presentations-heading">Presentations</a>
+  <a href="#honors-heading">Honors</a>
+  <a href="#education-heading">Education</a>
+  <a href="#experience-heading">Experience</a>
+  <a href="#contact-heading">Contact</a>
+</nav>
+
+<section class="about" aria-labelledby="about-heading">
+  <h2 id="about-heading">About</h2>
+  <p>I study how AI and human experts should share judgment in platform decisions: LLM pipelines that separate verifiable evidence from the final decision, and that learn from disagreeing reviewers instead of averaging them away. A second line measures what markets learn from how firms present themselves, using speech, text, faces and scenes. In a PhD, I aim to design and evaluate human&ndash;AI decision systems in business and information systems.</p>
+</section>
+
+<section aria-labelledby="news-heading">
+  <h2 id="news-heading">News</h2>
+  <ul class="news-list">
+    <li><span class="news-date">Oct 2026</span><span class="news-item">Presenting <em>Collusion in the Cards</em> at the INFORMS 10th Workshop on Data Science and at CIST 2026, San Francisco.</span></li>
+    <li><span class="news-date">Oct 2026</span><span class="news-item">Presenting <em>Collusion in the Cards</em> at the Workshop on AI and the Future of Collaborative Innovation (WAICI), NYU Stern.</span></li>
+    <li><span class="news-date">Sep 2026</span><span class="news-item">Poster of <em>Collusion in the Cards</em> at NC Analytics and AI Day, INFORMS North Carolina Chapter.</span></li>
+    <li><span class="news-date">Jul 2026</span><span class="news-item">Started <em>Seeing and Hearing the Pitch</em> with Kunpeng Zhang (University of Maryland) and Yusen Xia (Georgia State University).</span></li>
+    <li><span class="news-date">Feb 2026</span><span class="news-item">Started <em>Collusion in the Cards</em> with Kan Xu (Arizona State University).</span></li>
+  </ul>
+</section>
+
+<section aria-labelledby="research-heading">
+  <h2 id="research-heading">Research</h2>
+
+  <div class="card">
+    <h3>Collusion in the Cards: AI Detection and Explanation with LLMs</h3>
+    <p class="meta">Feb 2026 &ndash; Present</p>
+    <p class="collab">Advisor: Kan Xu, Arizona State University</p>
+    <p><strong>Problem.</strong> Online card-game platforms must adjudicate collusion reports case by case: every move can be legal while coordinated intent surfaces only across the sequence. Labels come from 171 volunteer reviewers who disagree on 39% of 8,553 games, and an 84% positive prior makes accuracy uninformative.</p>
+    <p><strong>Model.</strong> Designed VERA, a Qwen2.5-7B architecture that separates evidence from judgment: a rule-grounded analyst (rule-cloze SFT, then distillation on 501 teacher-annotated games) reconstructs each game from the log alone, while the player report bypasses it and enters a trained adjudicator. Proposed reviewer-aware weighted SFT: a cross-attention network over game, report and review embeddings, reviewer histories and vote structure learns a positive weight for each training case.</p>
+    <p><strong>Results &amp; contribution.</strong> On 500 test and 1,000 out-of-sample cases, VERA reaches 0.491 and 0.492 MCC, against 0.343 and 0.245 for a prompted frontier model and 0.424 and 0.420 for the best embedding classifier. Analysis helps only once the adjudicator is task-trained; reviewer weighting gains most out of sample, and needs no human review at inference.</p>
+  </div>
+
+  <div class="card">
+    <h3>Seeing and Hearing the Pitch: Multimodal Signals in IPO Roadshows and Underpricing</h3>
+    <p class="meta">Jul 2026 &ndash; Present</p>
+    <p class="collab">Advisor: Kunpeng Zhang, University of Maryland and Yusen Xia, Georgia State University</p>
+    <p><strong>Problem.</strong> Does how executives present in IPO roadshows, beyond the prospectus, carry information the market prices?</p>
+    <p><strong>Model.</strong> Built a corpus of 600 STAR Market roadshows (599 firms, 18,560 sentences) with timestamped speech recognition, LDA topic segmentation, and sentence-aligned acoustic, facial, gesture and scene features; screened 749 features against 8 underpricing measures with time-based splits and global FDR control.</p>
+    <p><strong>Results &amp; contribution.</strong> The chairman's time share on technology and R&amp;D content is the only presentation feature that survives global correction (r = &minus;0.16, q = 0.03), with the same sign before and after the 2023 IPO tightening; dispersion of investor questions in the online Q&amp;A raises out-of-sample R&sup2; from 0.091 to 0.128. Ongoing.</p>
+  </div>
+
+  <div class="card">
+    <h3>Conditional Random Fields for Sequential Consumer Choice</h3>
+    <p class="meta">Mar 2024 &ndash; Jun 2024</p>
+    <p class="collab">Advisor: Xin Liu, SUFE &middot; SUFE Outstanding Graduation Thesis (top 2%)</p>
+    <p><strong>Problem.</strong> Model students' sequential dining choices from objective behavior rather than self-reported satisfaction.</p>
+    <p><strong>Model.</strong> Ran a 14-day panel of 60+ students (539 observations) and fit a linear-chain CRF conditioned on spending.</p>
+    <p><strong>Results &amp; contribution.</strong> 92.7% accuracy; stationary distributions rank cafeterias by value and reveal takeout's rising share.</p>
+    <p class="link-row"><a href="assets/crf_thesis_zh.pdf" target="_blank" rel="noopener">Thesis PDF (in Chinese)</a></p>
+  </div>
+
+  <div class="card">
+    <h3>The Convergence of Equity and Efficiency: Evidence from ESG Disclosure Standards</h3>
+    <p class="meta">Nov 2022 &ndash; Dec 2022</p>
+    <p class="collab">Third Prize (top 1.35%), 13th National Undergraduate Economics Annual Conference</p>
+    <p><strong>Problem.</strong> How the GRI and SASB disclosure standards differ in design and in their economic effects on adopting firms.</p>
+    <p><strong>Model.</strong> TF-IWF mining of 160+ standard documents; a 3,711 firm-year panel from 4,062 ESG reports; DID and logit/probit.</p>
+    <p><strong>Results &amp; contribution.</strong> Contrasted GRI's stakeholder and SASB's financial focus and estimated adoption effects.</p>
+    <p class="link-row"><a href="assets/esg_gri_sasb_zh.pdf" target="_blank" rel="noopener">Paper PDF (in Chinese)</a></p>
+  </div>
+</section>
+
+<section aria-labelledby="earlier-research-heading">
+  <h2 id="earlier-research-heading">Earlier Research</h2>
+
+  <div class="card">
+    <h3>Trend Factors in China's A-Share Market: Testing and an Exponential-Moving-Average Improvement</h3>
+    <p class="meta">Independent research &middot; 2023</p>
+    <p><strong>Problem.</strong> Whether the trend factor, a return predictor built from moving averages of past prices, earns robust returns in China's A-share market after the split-share reform.</p>
+    <p><strong>Model.</strong> A-share data from July 2007 to December 2022; replaced the equal-weighted moving averages with weighted and exponential moving averages; train/test split, Fama&ndash;MacBeth regressions, spanning tests against the CH-3 and FF-5 factors, and conditional double sorts.</p>
+    <p><strong>Results &amp; contribution.</strong> With 10% long&ndash;short portfolios and a decay rate of 0.92, the EMA version raises the annualized return from 7.37% to 9.54% and holds up in both the training and test periods; it earns returns beyond CH-3 and FF-5. The short-term reversal effect fades after about 20 trading days.</p>
+    <p class="link-row"><a href="assets/trend_factor_zh.pdf" target="_blank" rel="noopener">Paper PDF (in Chinese)</a></p>
+  </div>
+</section>
+
+<section aria-labelledby="presentations-heading">
+  <h2 id="presentations-heading">Presentations</h2>
+  <p class="collab" style="margin-bottom:12px;">On <em>Collusion in the Cards</em></p>
+  <ol class="presentations">
+    <li>INFORMS 10th Workshop on Data Science, San Francisco <span class="venue-date">&mdash; Oct 2026</span></li>
+    <li>INFORMS Conference on Information Systems and Technology (CIST), San Francisco <span class="venue-date">&mdash; Oct 2026</span></li>
+    <li>Workshop on AI and the Future of Collaborative Innovation (WAICI), NYU Stern <span class="venue-date">&mdash; Oct 2026</span></li>
+    <li>NC Analytics and AI Day, INFORMS North Carolina Chapter (poster) <span class="venue-date">&mdash; Sep 2026</span></li>
+    <li>PHBS AIEM 2026, Peking University HSBC Business School <span class="venue-date">&mdash; 2026</span></li>
+  </ol>
+</section>
+
+<section aria-labelledby="honors-heading">
+  <h2 id="honors-heading">Honors</h2>
+  <ul class="honors-list">
+    <li><span>First-Class Scholarship, Peking University HSBC Business School</span><span class="honor-year">2024</span></li>
+    <li><span>National Scholarship, Ministry of Education of China</span><span class="honor-year"></span></li>
+    <li><span>Shanghai Excellent Graduate</span><span class="honor-year">2024</span></li>
+    <li><span>SUFE Outstanding Graduation Thesis (top 2%)</span><span class="honor-year">2024</span></li>
+    <li><span>Third Prize (top 1.35%), 13th National Undergraduate Economics Annual Conference</span><span class="honor-year">2022</span></li>
+    <li><span>First Prize, Huashu Cup National College Mathematical Modeling Competition</span><span class="honor-year">2021</span></li>
+  </ul>
+</section>
+
+<section aria-labelledby="education-heading">
+  <h2 id="education-heading">Education</h2>
+
+  <div class="edu-entry">
+    <div class="entry-head">
+      <h3>Peking University, HSBC Business School (PHBS)</h3>
+      <span class="dates">Aug 2024 &ndash; Present</span>
+    </div>
+    <p class="entry-sub">Master of Finance &middot; Shenzhen, China</p>
+    <p>First-Class Scholarship; admitted through direct admission (top 10% of interviewees).</p>
+  </div>
+
+  <div class="edu-entry">
+    <div class="entry-head">
+      <h3>Peking University, UK Campus</h3>
+      <span class="dates">Apr 2025 &ndash; Jun 2025</span>
+    </div>
+    <p class="entry-sub">Exchange Program &middot; Oxford, UK</p>
+  </div>
+
+  <div class="edu-entry">
+    <div class="entry-head">
+      <h3>Shanghai University of Finance and Economics (SUFE)</h3>
+      <span class="dates">Sep 2020 &ndash; Jun 2024</span>
+    </div>
+    <p class="entry-sub">B.A. in Economic Statistics &middot; Shanghai, China</p>
+    <p>Rank 1/107; GPA 3.76/4.00. National Scholarship; Shanghai Excellent Graduate. IELTS 7.0.</p>
+  </div>
+</section>
+
+<section aria-labelledby="experience-heading">
+  <h2 id="experience-heading">Experience</h2>
+  <div class="exp-entry">
+    <div class="entry-head">
+      <h3>TikTok, ByteDance &mdash; Global Marketing Product &amp; Technology</h3>
+      <span class="dates">Sep 2025 &ndash; Jan 2026</span>
+    </div>
+    <p class="entry-sub">Product Manager Intern (LLM applications) &middot; Shenzhen, China</p>
+    <ul>
+      <li>Turned a vague &ldquo;marketing intensity&rdquo; judgment into an annotation taxonomy for undisclosed commercial videos; designed the prompts and, with the algorithm team, distilled a teacher LLM into a lightweight detector (90% precision at 70% recall; language coverage of global traffic from 50% to 99%).</li>
+      <li>Built agent workflows for human appeal review, cutting review time from 48 to 2 hours and manual work by 60%.</li>
+    </ul>
+  </div>
+
+  <h3 class="exp-subhead">Earlier internships</h3>
+  <ul class="internships">
+    <li><span>Strategy Operations Intern, E-commerce &mdash; ByteDance, Shanghai</span><span class="intern-dates">Feb 2024 &ndash; Jun 2024</span></li>
+    <li><span>FOF Quantitative Research Intern &mdash; Industrial Bank Wealth Management</span><span class="intern-dates">Oct 2023 &ndash; 2024</span></li>
+    <li><span>Financial Engineering Intern &mdash; China Galaxy Securities</span><span class="intern-dates">2023</span></li>
+    <li><span>Proprietary Trading Research Intern &mdash; Sinolink Securities</span><span class="intern-dates">2023</span></li>
+    <li><span>Equity Research Intern &mdash; Haitong Securities</span><span class="intern-dates">Jul 2022 &ndash; Sep 2022</span></li>
+  </ul>
+</section>
+
+<section aria-labelledby="contact-heading">
+  <h2 id="contact-heading">Contact</h2>
+  <nav class="links">
+    <a href="mailto:mat0728@stu.pku.edu.cn">Email</a>
+    <a href="https://www.linkedin.com/in/%E6%97%AD-%E7%8E%8B-30438b40a/">LinkedIn</a>
+    <a href="https://github.com/MatWang">GitHub</a>
+  </nav>
+</section>
+
+<footer>
+  Last updated: September 2026
+</footer>
+
+</body>
+</html>
