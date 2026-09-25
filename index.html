@@ -47,6 +47,18 @@
     flex: 0 0 auto;
     display: block;
   }
+  .applying {
+    display: inline-block;
+    margin: 4px 0 12px;
+    padding: 7px 12px;
+    background: #eaf1f8;
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+  .about p + p { margin-top: 0.7em; }
   .header-text {
     min-width: 0;
   }
@@ -295,10 +307,11 @@
 
 <header>
   <div class="header-top">
-    <img class="profile-photo" src="assets/profile.jpg" alt="Xu Wang">
+    <img class="profile-photo" src="assets/profile_v3.jpg" alt="Xu Wang">
     <div class="header-text">
       <h1>Xu Wang <span class="zh-name">王旭</span></h1>
       <p class="tagline">Master of Finance student, Peking University HSBC Business School</p>
+      <p class="applying">Applying to PhD programs in <strong>Information Systems</strong> and <strong>Quantitative Marketing</strong> at U.S. business schools for <strong>Fall 2027</strong>.</p>
       <nav class="links">
         <a href="mailto:mat0728@stu.pku.edu.cn">Email</a>
         <a href="cv/Xu_Wang_CV.pdf">CV</a>
@@ -323,6 +336,7 @@
 
 <section class="about" aria-labelledby="about-heading">
   <h2 id="about-heading">About</h2>
+  <p><strong>Research interests:</strong> AI for business, using large language models (supervised fine-tuning and reinforcement learning), deep learning and machine learning to study decisions on platforms and in markets.</p>
   <p>I study how AI and human experts should share judgment in platform decisions: LLM pipelines that separate verifiable evidence from the final decision, and that learn from disagreeing reviewers instead of averaging them away. A second line measures what markets learn from how firms present themselves, using speech, text, faces and scenes. In a PhD, I aim to design and evaluate human&ndash;AI decision systems in business and information systems.</p>
 </section>
 
@@ -334,6 +348,7 @@
     <li><span class="news-date">Sep 2026</span><span class="news-item">Poster of <em>Collusion in the Cards</em> at NC Analytics and AI Day, INFORMS North Carolina Chapter.</span></li>
     <li><span class="news-date">Jul 2026</span><span class="news-item">Started <em>Seeing and Hearing the Pitch</em> with Kunpeng Zhang (University of Maryland) and Yusen Xia (Georgia State University).</span></li>
     <li><span class="news-date">Feb 2026</span><span class="news-item">Started <em>Collusion in the Cards</em> with Kan Xu (Arizona State University).</span></li>
+    <li><span class="news-date">Aug 2025</span><span class="news-item">Won First Prize (top 0.13%, student category) at the AEJMC 108th Annual Conference, San Francisco, for <em>Case Study of Chinese Short-Drama Overseas Platform</em>.</span></li>
   </ul>
 </section>
 
@@ -356,6 +371,15 @@
     <p><strong>Problem.</strong> Does how executives present in IPO roadshows, beyond the prospectus, carry information the market prices?</p>
     <p><strong>Model.</strong> Built a corpus of 600 STAR Market roadshows (599 firms, 18,560 sentences) with timestamped speech recognition, LDA topic segmentation, and sentence-aligned acoustic, facial, gesture and scene features; screened 749 features against 8 underpricing measures with time-based splits and global FDR control.</p>
     <p><strong>Results &amp; contribution.</strong> The chairman's time share on technology and R&amp;D content is the only presentation feature that survives global correction (r = &minus;0.16, q = 0.03), with the same sign before and after the 2023 IPO tightening; dispersion of investor questions in the online Q&amp;A raises out-of-sample R&sup2; from 0.091 to 0.128. Ongoing.</p>
+  </div>
+
+  <div class="card">
+    <h3>Case Study of Chinese Short-Drama Overseas Platform</h3>
+    <p class="meta">Mar 2025 &ndash; Aug 2025 &middot; Shenzhen, China and San Francisco, USA</p>
+    <p class="collab">Advisor: Yangjuan Hu, PHBS &middot; First Prize (top 0.13%), Student Category, AEJMC 108th Annual Conference</p>
+    <p><strong>Problem.</strong> What drives the overseas revenue of Chinese short-drama platforms, using DramaBox and ReelShort as cases.</p>
+    <p><strong>Model.</strong> Built a platform revenue elasticity model based on a Cobb&ndash;Douglas production function to quantify the revenue of DramaBox and ReelShort.</p>
+    <p><strong>Results &amp; contribution.</strong> Presented the case at the AEJMC 108th Annual Conference in San Francisco, including an impromptu oral report in English, and won First Prize in the student category.</p>
   </div>
 
   <div class="card">
@@ -402,11 +426,16 @@
     <li>NC Analytics and AI Day, INFORMS North Carolina Chapter (poster) <span class="venue-date">&mdash; Sep 2026</span></li>
     <li>PHBS AIEM 2026, Peking University HSBC Business School <span class="venue-date">&mdash; 2026</span></li>
   </ol>
+  <p class="collab" style="margin:16px 0 12px;">On <em>Case Study of Chinese Short-Drama Overseas Platform</em></p>
+  <ol class="presentations">
+    <li>AEJMC 108th Annual Conference, San Francisco (First Prize, Student Category) <span class="venue-date">&mdash; Aug 2025</span></li>
+  </ol>
 </section>
 
 <section aria-labelledby="honors-heading">
   <h2 id="honors-heading">Honors</h2>
   <ul class="honors-list">
+    <li><span>First Prize (top 0.13%), Student Category, AEJMC 108th Annual Conference</span><span class="honor-year">2025</span></li>
     <li><span>First-Class Scholarship, Peking University HSBC Business School</span><span class="honor-year">2024</span></li>
     <li><span>National Scholarship, Ministry of Education of China</span><span class="honor-year"></span></li>
     <li><span>Shanghai Excellent Graduate</span><span class="honor-year">2024</span></li>
@@ -464,8 +493,6 @@
   <ul class="internships">
     <li><span>Strategy Operations Intern, E-commerce &mdash; ByteDance, Shanghai</span><span class="intern-dates">Feb 2024 &ndash; Jun 2024</span></li>
     <li><span>FOF Quantitative Research Intern &mdash; Industrial Bank Wealth Management</span><span class="intern-dates">Oct 2023 &ndash; 2024</span></li>
-    <li><span>Financial Engineering Intern &mdash; China Galaxy Securities</span><span class="intern-dates">2023</span></li>
-    <li><span>Proprietary Trading Research Intern &mdash; Sinolink Securities</span><span class="intern-dates">2023</span></li>
     <li><span>Equity Research Intern &mdash; Haitong Securities</span><span class="intern-dates">Jul 2022 &ndash; Sep 2022</span></li>
   </ul>
 </section>
