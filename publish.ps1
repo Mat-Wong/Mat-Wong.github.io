@@ -71,9 +71,20 @@ gh auth setup-git *> $null
 $Login  = ((gh api user --jq .login) | Out-String).Trim()
 $UserId = ((gh api user --jq .id)    | Out-String).Trim()
 if (-not $Login) { Fail '读取 GitHub 账号信息失败，请检查网络后重试。' }
-$Repo = "$Login.github.io"
-Write-Host "已登录：$Login"
-if ($Login -ne 'MatWang') { Write-Host "注意：当前登录的不是 MatWang，网站会发布到 $Login 名下。" -ForegroundColor Yellow }
+# 网址 matwang.github.io 属于 GitHub 组织 MatWang。你的个人账号是 $Login；
+# 只要你是 MatWang 组织的成员（Owner），网站就发布到组织下的 MatWang.github.io。
+$Target = 'Mat-Wong'   # 网站用个人账号 Mat-Wong 发布：https://mat-wong.github.io
+$Owner  = $Login
+if ($Login -ine $Target) {
+  $orgs = @(gh api user/orgs --jq '.[].login')
+  if ($orgs -icontains $Target) { $Owner = $Target }
+  else {
+    Write-Host "注意：你的账号 $Login 不是组织 $Target 的成员，所以只能发布到 https://$($Login.ToLower()).github.io" -ForegroundColor Yellow
+    Write-Host "      若 MatWang 组织是你建的，请先在 https://github.com/orgs/$Target/people 确认你是 Owner（或把成员身份设为 Public）后重跑。" -ForegroundColor Yellow
+  }
+}
+$Repo = "$Owner.github.io"
+Write-Host "已登录：$Login   网站仓库：$Owner/$Repo"
 
 Step '复制最新的 CV'
 if (Test-Path -LiteralPath $CvSource) {
@@ -93,19 +104,29 @@ if ($LASTEXITCODE -ne 0) { git commit -q -m "Update site $(Get-Date -Format 'yyy
 git branch -M main
 
 Step '推送到 GitHub'
-gh repo view "$Login/$Repo" *> $null
+gh repo view "$Owner/$Repo" *> $null
 if ($LASTEXITCODE -ne 0) {
-  gh repo create $Repo --public --description 'Personal academic website' --source . --remote origin --push
-} else {
-  if ((git remote) -notcontains 'origin') { git remote add origin "https://github.com/$Login/$Repo.git" }
-  git push -u origin main
+  $old = "$Login/$Login.github.io"
+  gh repo view $old *> $null
+  if ($Owner -ne $Login -and $LASTEXITCODE -eq 0) {
+    Write-Host "把已有仓库 $old 转移到 $Owner/$Repo（旧网址会自动失效）..."
+    gh api -X POST "repos/$old/transfer" -f "new_owner=$Owner" -f "new_name=$Repo" *> $null
+    Start-Sleep -Seconds 8
+  } else {
+    gh repo create "$Owner/$Repo" --public --description 'Personal academic website' *> $null
+  }
+  gh repo view "$Owner/$Repo" *> $null
+  if ($LASTEXITCODE -ne 0) { Fail "没能创建或转移仓库 $Owner/$Repo。请把窗口截图发给 Claude。" }
 }
+$remoteUrl = "https://github.com/$Owner/$Repo.git"
+if ((git remote) -contains 'origin') { git remote set-url origin $remoteUrl } else { git remote add origin $remoteUrl }
+git push -u origin main
 if ($LASTEXITCODE -ne 0) { Fail '推送失败，请把这个窗口截图发给 Claude。' }
 
 Step '开启 GitHub Pages'
-gh api -X POST "repos/$Login/$Repo/pages" -f 'source[branch]=main' -f 'source[path]=/' *> $null
+gh api -X POST "repos/$Owner/$Repo/pages" -f 'source[branch]=main' -f 'source[path]=/' *> $null
 if ($LASTEXITCODE -ne 0) { Write-Host 'Pages 已经是开启状态（或 GitHub 已自动开启）。' }
 
-$Url = "https://$($Login.ToLower()).github.io"
+$Url = "https://$($Owner.ToLower()).github.io"
 Step "完成！1–2 分钟后网站上线：$Url （先看到 404 就稍等再刷新）"
 Start-Process $Url

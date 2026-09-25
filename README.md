@@ -8,8 +8,8 @@
 
 1. 装好 Git 和 GitHub CLI（没装的话，用 Windows 自带的 winget，只装一次）
 2. 弹出浏览器让你登录 GitHub 并点"Authorize"（只需一次）
-3. 创建公开仓库 `MatWang.github.io`，上传网站，打开 GitHub Pages
-4. 自动打开 https://matwang.github.io （首次上线约 1–2 分钟，刚打开是 404 就等一下再刷新）
+3. 创建公开仓库 `Mat-Wong.github.io`，上传网站，打开 GitHub Pages
+4. 自动打开 https://mat-wong.github.io （首次上线约 1–2 分钟，刚打开是 404 就等一下再刷新）
 
 以后改了网站或简历，**再双击一次**就更新。每次运行都会先把
 `D:\上个大学我都学了些什么\简历个人陈述推荐信\Xu_Wang_CV_2026Sep\Xu_Wang_CV.pdf`
