@@ -6,6 +6,8 @@
 <title>Xu Wang</title>
 <meta name="description" content="Xu Wang — Master of Finance student, Peking University HSBC Business School">
 <style>
+  /* Hallmark · extend (redesign-in-place) · genre: editorial · theme: existing site tokens (Palatino, navy on cream)
+   * added: figure drawers (details), lightbox (dialog), open-source list · pre-emit critique: P4 H4 E4 S5 R5 V3 */
   :root {
     --accent: #1f4e79;
     --bg: #fbfaf7;
@@ -13,12 +15,19 @@
     --muted: #5a5f66;
     --border: #e2ddd2;
     --card-bg: #ffffff;
+    --accent-soft: #eaf1f8;
+    --paper-2: #f4f1ea;
+    --scrim: rgba(20, 24, 30, 0.93);
+    --on-scrim: #f3f1ec;
+    --on-scrim-muted: #b9bec6;
+    --focus: #1f4e79;
   }
   * { box-sizing: border-box; }
+  a { color: var(--accent); text-underline-offset: 2px; }
   html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   body {
     background: var(--bg);
@@ -51,7 +60,7 @@
     display: inline-block;
     margin: 4px 0 12px;
     padding: 7px 12px;
-    background: #eaf1f8;
+    background: var(--accent-soft);
     border-left: 4px solid var(--accent);
     border-radius: 4px;
     color: var(--text);
@@ -289,6 +298,159 @@
     white-space: nowrap;
     text-align: right;
   }
+  /* ---- figure drawers ---- */
+  details.figs {
+    margin-top: 10px;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+  }
+  details.figs > summary {
+    cursor: pointer;
+    list-style: none;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 0.92rem;
+    color: var(--accent);
+    white-space: nowrap;
+    border-bottom: 1px solid transparent;
+  }
+  details.figs > summary::-webkit-details-marker { display: none; }
+  details.figs > summary::after {
+    content: "\25B8";
+    font-size: 0.8em;
+    transition: transform 160ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  details.figs[open] > summary::after { transform: rotate(90deg); }
+  details.figs > summary:hover { border-bottom-color: var(--accent); }
+  details.figs > summary:focus-visible,
+  .fig-grid a:focus-visible,
+  .lb-btn:focus-visible,
+  .lb-dl:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .fig-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 135px), 1fr));
+    gap: 12px;
+    margin: 10px 0 2px;
+  }
+  .fig-grid figure { margin: 0; min-width: 0; }
+  .fig-grid a {
+    display: block;
+    background: var(--paper-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px;
+    transition: border-color 120ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .fig-grid a:hover { border-color: var(--accent); }
+  .fig-grid img {
+    display: block;
+    width: 100%;
+    height: 112px;
+    object-fit: contain;
+  }
+  .fig-grid figcaption {
+    font-size: 0.8rem;
+    line-height: 1.35;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+  .figs-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+  /* ---- lightbox ---- */
+  dialog.lightbox {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    background: var(--scrim);
+    color: var(--on-scrim);
+  }
+  dialog.lightbox::backdrop { background: transparent; }
+  .lb-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 16px 16px;
+    gap: 10px;
+  }
+  .lb-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.88rem;
+    color: var(--on-scrim-muted);
+  }
+  .lb-stage {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .lb-stage img {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 0;
+    object-fit: contain;
+    background: var(--card-bg);
+    border-radius: 2px;
+  }
+  .lb-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px 20px;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .lb-cap { margin: 0; flex: 1 1 320px; min-width: 0; font-size: 0.95rem; line-height: 1.45; }
+  .lb-btn, .lb-dl {
+    font: inherit;
+    color: var(--on-scrim);
+    background: transparent;
+    border: 1px solid var(--on-scrim-muted);
+    border-radius: 4px;
+    padding: 4px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .lb-btn:hover, .lb-dl:hover { border-color: var(--on-scrim); }
+  .lb-btn:active, .lb-dl:active { transform: translateY(1px); }
+  .lb-btn[disabled] { opacity: 0.35; cursor: default; }
+  .lb-nav { flex: 0 0 auto; font-size: 1.2rem; padding: 6px 12px; }
+  @media (max-width: 600px) {
+    .lb-nav { display: none; }
+    .fig-grid img { height: 96px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    details.figs > summary::after, .fig-grid a { transition: none; }
+  }
+  /* ---- open source ---- */
+  ul.repos { list-style: none; padding: 0; margin: 0; }
+  ul.repos li { margin-bottom: 14px; }
+  ul.repos li:last-child { margin-bottom: 0; }
+  ul.repos .repo-name { font-size: 1.02rem; font-weight: bold; }
+  ul.repos .repo-name a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--border); }
+  ul.repos .repo-name a:hover { border-bottom-color: var(--accent); }
+  ul.repos p { margin: 2px 0 0; }
+  .link-row + details.figs { border-top: 0; padding-top: 0; margin-top: 6px; }
+  .card .subnote { color: var(--muted); font-size: 0.92rem; margin: 0 0 10px; }
   footer {
     margin-top: 48px;
     padding-top: 16px;
@@ -327,6 +489,7 @@
   <a href="#news-heading">News</a>
   <a href="#research-heading">Research</a>
   <a href="#earlier-research-heading">Earlier Research</a>
+  <a href="#open-source-heading">Open Source</a>
   <a href="#presentations-heading">Presentations</a>
   <a href="#honors-heading">Honors</a>
   <a href="#education-heading">Education</a>
@@ -346,6 +509,8 @@
     <li><span class="news-date">Oct 2026</span><span class="news-item">Presenting <em>Collusion in the Cards</em> at the INFORMS 10th Workshop on Data Science and at CIST 2026, San Francisco.</span></li>
     <li><span class="news-date">Oct 2026</span><span class="news-item">Presenting <em>Collusion in the Cards</em> at the Workshop on AI and the Future of Collaborative Innovation (WAICI), NYU Stern.</span></li>
     <li><span class="news-date">Sep 2026</span><span class="news-item">Poster of <em>Collusion in the Cards</em> at NC Analytics and AI Day, INFORMS North Carolina Chapter.</span></li>
+    <li><span class="news-date">Jul 2026</span><span class="news-item">Released <a href="https://github.com/Mat-Wong/Business-Academic-Skill" target="_blank" rel="noopener">Business-Academic-Skill</a>, open-source AI skills for business PhD research.</span></li>
+    <li><span class="news-date">Jul 2026</span><span class="news-item">Released <a href="https://github.com/Mat-Wong/GRE_guide" target="_blank" rel="noopener">GRE_guide</a>, open GRE preparation materials.</span></li>
     <li><span class="news-date">Jul 2026</span><span class="news-item">Started <em>Seeing and Hearing the Pitch</em> with <a href="https://kpzhang.github.io/" target="_blank" rel="noopener">Kunpeng Zhang</a> (University of Maryland) and <a href="https://robinson.gsu.edu/profile/yusen-xia/" target="_blank" rel="noopener">Yusen Xia</a> (Georgia State University).</span></li>
     <li><span class="news-date">Feb 2026</span><span class="news-item">Started <em>Collusion in the Cards</em> with <a href="https://kanxu526.github.io/" target="_blank" rel="noopener">Kan Xu</a> (Arizona State University).</span></li>
     <li><span class="news-date">Aug 2025</span><span class="news-item">Won First Prize (top 0.13%, student category) at the AEJMC 108th Annual Conference, San Francisco, for <em>Localized vs. Translated Micro-Short Dramas</em>.</span></li>
@@ -362,6 +527,14 @@
     <p><strong>Problem.</strong> Online card-game platforms must adjudicate collusion reports case by case: every move can be legal while coordinated intent surfaces only across the sequence. Labels come from 171 volunteer reviewers who disagree on 39% of 8,553 games, and an 84% positive prior makes accuracy uninformative.</p>
     <p><strong>Model.</strong> Designed VERA, a Qwen2.5-7B architecture that separates evidence from judgment: a rule-grounded analyst (rule-cloze SFT, then distillation on 501 teacher-annotated games) reconstructs each game from the log alone, while the player report bypasses it and enters a trained adjudicator. Proposed reviewer-aware weighted SFT: a cross-attention network over game, report and review embeddings, reviewer histories and vote structure learns a positive weight for each training case.</p>
     <p><strong>Results &amp; contribution.</strong> On 500 test and 1,000 out-of-sample cases, VERA reaches 0.491 and 0.492 MCC, against 0.343 and 0.245 for a prompted frontier model and 0.424 and 0.420 for the best embedding classifier. Analysis helps only once the adjudicator is task-trained; reviewer weighting gains most out of sample, and needs no human review at inference.</p>
+    <details class="figs">
+      <summary>Figures (3)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/collusion_vera.jpg" data-full="assets/figs/full/collusion_vera.png" data-cap="VERA architecture: (a) sequential training of the rule-grounded analyst, (b) case adjudication with the player report entering the adjudicator directly, (c) reviewer-aware adjudicator training."><img src="assets/figs/thumb/collusion_vera.jpg" alt="VERA architecture" loading="lazy"></a><figcaption>VERA architecture</figcaption></figure>
+        <figure><a href="assets/figs/view/collusion_game_ui.jpg" data-full="assets/figs/full/collusion_game_ui.png" data-cap="The simulated Tuolaji (Sheng Ji) card-game interface used to generate game logs."><img src="assets/figs/thumb/collusion_game_ui.jpg" alt="Game interface" loading="lazy"></a><figcaption>Game interface</figcaption></figure>
+        <figure><a href="assets/figs/view/collusion_poster.jpg" data-full="assets/figs/full/collusion_poster.png" data-cap="Conference poster, NC Analytics and AI Day 2026 (INFORMS North Carolina Chapter)."><img src="assets/figs/thumb/collusion_poster.jpg" alt="Poster" loading="lazy"></a><figcaption>Poster</figcaption></figure>
+      </div>
+    </details>
   </div>
 
   <div class="card">
@@ -371,6 +544,12 @@
     <p><strong>Problem.</strong> Does how executives present in IPO roadshows, beyond the prospectus, carry information the market prices?</p>
     <p><strong>Model.</strong> Built a corpus of 600 STAR Market roadshows (599 firms, 18,560 sentences) with timestamped speech recognition, LDA topic segmentation, and sentence-aligned acoustic, facial, gesture and scene features; screened 749 features against 8 underpricing measures with time-based splits and global FDR control.</p>
     <p><strong>Results &amp; contribution.</strong> The chairman's time share on technology and R&amp;D content is the only presentation feature that survives global correction (r = &minus;0.16, q = 0.03), with the same sign before and after the 2023 IPO tightening; dispersion of investor questions in the online Q&amp;A raises out-of-sample R&sup2; from 0.091 to 0.128. Ongoing.</p>
+    <details class="figs">
+      <summary>Figures (1)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/ipo_pipeline.jpg" data-full="assets/figs/full/ipo_pipeline.png" data-cap="Data and modeling pipeline: roadshow video and online Q&amp;amp;A to sentence-aligned multimodal features, screened against IPO underpricing. Schematic only; results are not shown while the project is ongoing."><img src="assets/figs/thumb/ipo_pipeline.jpg" alt="Pipeline" loading="lazy"></a><figcaption>Pipeline</figcaption></figure>
+      </div>
+    </details>
   </div>
 
   <div class="card">
@@ -381,6 +560,13 @@
     <p><strong>Model.</strong> Compared content mix, viewership, regional revenue and retention of the two platforms, and estimated a Cobb&ndash;Douglas revenue model, Revenue = &beta;<sub>0</sub>&middot;MAU<sup>&beta;<sub>1</sub></sup>&middot;ARPDAU<sup>&beta;<sub>2</sub></sup>, in logs; residual tests (autocorrelation, heteroskedasticity, non-normality) led to GLS re-estimation.</p>
     <p><strong>Results &amp; contribution.</strong> DramaBox (87.7% translated) earns more at the same user scale and monetization (&beta;<sub>0</sub> 1.29 vs. 1.17) and its revenue grows more than one-for-one with users (MAU elasticity 1.15 vs. 0.73), consistent with broader cross-cultural appeal; ReelShort&rsquo;s localized hits drive 93% of its views but concentrate 72% of revenue in North America. Payment elasticities below one for both (0.33 vs. 0.18; all at the 1% level) point to weak monetization.</p>
     <p class="link-row"><a href="assets/short_drama_slides.pdf" target="_blank" rel="noopener">Slides (PDF)</a></p>
+    <details class="figs">
+      <summary>Figures (2)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/drama_gls.jpg" data-full="assets/figs/full/drama_gls.png" data-cap="GLS re-estimation of the Cobb&amp;ndash;Douglas revenue model, DramaBox vs. ReelShort (slide from the conference presentation)."><img src="assets/figs/thumb/drama_gls.jpg" alt="GLS estimates" loading="lazy"></a><figcaption>GLS estimates</figcaption></figure>
+        <figure><a href="assets/figs/view/drama_params.jpg" data-full="assets/figs/full/drama_params.png" data-cap="Interpreting &amp;beta;&lt;sub&gt;0&lt;/sub&gt; (structural advantage), &amp;beta;&lt;sub&gt;1&lt;/sub&gt; (MAU elasticity) and &amp;beta;&lt;sub&gt;2&lt;/sub&gt; (ARPDAU elasticity)."><img src="assets/figs/thumb/drama_params.jpg" alt="Parameter reading" loading="lazy"></a><figcaption>Parameter reading</figcaption></figure>
+      </div>
+    </details>
   </div>
 
 
@@ -392,6 +578,12 @@
     <p><strong>Model.</strong> Ran a 14-day panel of 60+ students (539 observations) and fit a linear-chain CRF conditioned on spending.</p>
     <p><strong>Results &amp; contribution.</strong> 92.7% accuracy; stationary distributions rank cafeterias by value and reveal takeout's rising share.</p>
     <p class="link-row"><a href="assets/crf_thesis_zh.pdf" target="_blank" rel="noopener">Thesis PDF (in Chinese)</a></p>
+    <details class="figs">
+      <summary>Figures (1)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/crf_framework.jpg" data-full="assets/figs/full/crf_framework.png" data-cap="Research framework of the thesis: data collection, linear-chain CRF, estimation, and the three outputs (conditional distribution, transition matrix, stationary distribution)."><img src="assets/figs/thumb/crf_framework.jpg" alt="Thesis framework" loading="lazy"></a><figcaption>Thesis framework</figcaption></figure>
+      </div>
+    </details>
   </div>
 
   <div class="card">
@@ -400,8 +592,22 @@
     <p class="collab">Third Prize (top 1.35%), 13th National Undergraduate Economics Annual Conference</p>
     <p><strong>Problem.</strong> How the GRI and SASB disclosure standards differ in design and in their economic effects on adopting firms.</p>
     <p><strong>Model.</strong> TF-IWF mining of 160+ standard documents; a 3,711 firm-year panel from 4,062 ESG reports; DID and logit/probit.</p>
-    <p><strong>Results &amp; contribution.</strong> Contrasted GRI's stakeholder and SASB's financial focus and estimated adoption effects.</p>
-    <p class="link-row"><a href="assets/esg_gri_sasb_zh.pdf" target="_blank" rel="noopener">Paper PDF (in Chinese)</a></p>
+    <p><strong>Results &amp; contribution.</strong> Contrasted GRI&rsquo;s stakeholder (equity) focus with SASB&rsquo;s financial (efficiency) focus and tested four channels through which the choice of standard feeds back on firms: disclosure costs, ESG rating divergence, indirect financing and carbon emissions. Higher ESG ratings go with lower loan spreads for GRI and SASB users alike.</p>
+    <p class="link-row"><a href="assets/esg_gri_sasb_zh.pdf" target="_blank" rel="noopener">Paper PDF</a></p>
+    <details class="figs">
+      <summary>Figures (8)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/esg_framework.jpg" data-full="assets/figs/full/esg_framework.png" data-cap="Research framework: equity (GRI) vs. efficiency (SASB) mindsets and the four-channel empirical design (Figure 1 of the paper)."><img src="assets/figs/thumb/esg_framework.jpg" alt="Framework" loading="lazy"></a><figcaption>Framework</figcaption></figure>
+        <figure><a href="assets/figs/view/esg_feedback.jpg" data-full="assets/figs/full/esg_feedback.png" data-cap="The ESG feedback and output system: disclosure costs, rating divergence, indirect financing and carbon emissions (Figure 2)."><img src="assets/figs/thumb/esg_feedback.jpg" alt="Four channels" loading="lazy"></a><figcaption>Four channels</figcaption></figure>
+        <figure><a href="assets/figs/view/esg_t7_disclosure_cost.jpg" data-full="assets/figs/full/esg_t7_disclosure_cost.png" data-cap="Channel 1, disclosure costs: characteristics of ESG reports under GRI vs. SASB, with t-tests (Table 7)."><img src="assets/figs/thumb/esg_t7_disclosure_cost.jpg" alt="Ch. 1 · Table 7" loading="lazy"></a><figcaption>Ch. 1 &middot; Table 7</figcaption></figure>
+        <figure><a href="assets/figs/view/esg_t8_standard_choice.jpg" data-full="assets/figs/full/esg_t8_standard_choice.png" data-cap="Channel 1, disclosure costs: regressions of firms&amp;rsquo; choice of standard on ESG and financial characteristics (Table 8)."><img src="assets/figs/thumb/esg_t8_standard_choice.jpg" alt="Ch. 1 · Table 8" loading="lazy"></a><figcaption>Ch. 1 &middot; Table 8</figcaption></figure>
+        <figure><a href="assets/figs/view/esg_t9_rating_divergence.jpg" data-full="assets/figs/full/esg_t9_rating_divergence.png" data-cap="Channel 2, rating divergence: effect of quantitative ESG disclosure on ESG rating divergence (Table 9)."><img src="assets/figs/thumb/esg_t9_rating_divergence.jpg" alt="Ch. 2 · Table 9" loading="lazy"></a><figcaption>Ch. 2 &middot; Table 9</figcaption></figure>
+        <figure><a href="assets/figs/view/esg_t10_divergence_x_standard.jpg" data-full="assets/figs/full/esg_t10_divergence_x_standard.png" data-cap="Channel 2, rating divergence: quantitative disclosure interacted with the standard used (Table 10)."><img src="assets/figs/thumb/esg_t10_divergence_x_standard.jpg" alt="Ch. 2 · Table 10" loading="lazy"></a><figcaption>Ch. 2 &middot; Table 10</figcaption></figure>
+        <figure><a href="assets/figs/view/esg_t12_loan_spreads.jpg" data-full="assets/figs/full/esg_t12_loan_spreads.png" data-cap="Channel 3, indirect financing: regressions of loan spreads on firms&amp;rsquo; ESG ratings, all / GRI / SASB (Table 12)."><img src="assets/figs/thumb/esg_t12_loan_spreads.jpg" alt="Ch. 3 · Table 12" loading="lazy"></a><figcaption>Ch. 3 &middot; Table 12</figcaption></figure>
+        <figure><a href="assets/figs/view/esg_t13_carbon_did.jpg" data-full="assets/figs/full/esg_t13_carbon_did.png" data-cap="Channel 4, carbon emissions: difference-in-differences on the introduction of ESG disclosure (Table 13)."><img src="assets/figs/thumb/esg_t13_carbon_did.jpg" alt="Ch. 4 · Table 13" loading="lazy"></a><figcaption>Ch. 4 &middot; Table 13</figcaption></figure>
+      </div>
+      <p class="figs-note">Regression tables for all four channels. Click a figure to enlarge; each opens with a high-resolution download.</p>
+    </details>
   </div>
 </section>
 
@@ -415,7 +621,91 @@
     <p><strong>Model.</strong> A-share data from July 2007 to December 2022; replaced the equal-weighted moving averages with weighted and exponential moving averages; train/test split, Fama&ndash;MacBeth regressions, spanning tests against the CH-3 and FF-5 factors, and conditional double sorts.</p>
     <p><strong>Results &amp; contribution.</strong> With 10% long&ndash;short portfolios and a decay rate of 0.92, the EMA version raises the annualized return from 7.37% to 9.54% and holds up in both the training and test periods; it earns returns beyond CH-3 and FF-5. The short-term reversal effect fades after about 20 trading days.</p>
     <p class="link-row"><a href="assets/trend_factor_zh.pdf" target="_blank" rel="noopener">Paper PDF (in Chinese)</a></p>
+    <details class="figs">
+      <summary>Figures (2)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/trend_ema_tstat.jpg" data-full="assets/figs/full/trend_ema_tstat.png" data-cap="t-statistic of the EMA trend factor&amp;rsquo;s monthly return against the decay parameter &amp;lambda;, 10% and 20% long&amp;ndash;short portfolios, training sample (Figure 1; labels in Chinese)."><img src="assets/figs/thumb/trend_ema_tstat.jpg" alt="t-stat vs. λ" loading="lazy"></a><figcaption>t-stat vs. &lambda;</figcaption></figure>
+        <figure><a href="assets/figs/view/trend_ema_table.jpg" data-full="assets/figs/full/trend_ema_table.png" data-cap="Returns and excess returns of EMA trend-factor deciles, test sample (Table 12; in Chinese). Newey&amp;ndash;West t-statistics in parentheses."><img src="assets/figs/thumb/trend_ema_table.jpg" alt="Decile returns" loading="lazy"></a><figcaption>Decile returns</figcaption></figure>
+      </div>
+    </details>
   </div>
+
+  <h3 class="exp-subhead">Modeling and case competitions</h3>
+
+  <div class="card">
+    <h3>Identifying Ancient Glass Artifacts with Regression and Machine Learning</h3>
+    <p class="meta">China Undergraduate Mathematical Contest in Modeling (CUMCM), Problem C &middot; 2022</p>
+    <p class="collab">Shanghai Second Prize &middot; team of three</p>
+    <p><strong>Problem.</strong> Classify ancient Chinese glass artifacts as high-potassium or lead&ndash;barium glass from their chemical composition, relate weathering to type, ornamentation and color, and recover the composition before weathering.</p>
+    <p><strong>Model.</strong> Chi-squared tests and Apriori association rules for weathering; LightGBM feature importance feeding a multiple regression that backs out pre-weathering composition; K-means sub-classes checked with the CH index and silhouette score; a LightGBM classifier for seven unlabeled artifacts.</p>
+    <p><strong>Results &amp; contribution.</strong> Test accuracy stayed above 80% even after the most informative components were removed; each glass type splits into three sub-types; high-potassium glass shows 18 significantly correlated component pairs against 4 for lead&ndash;barium glass.</p>
+    <details class="figs">
+      <summary>Figures (1)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/c9_apriori.jpg" data-full="assets/figs/full/c9_apriori.png" data-cap="Apriori association-rule mining used to link weathering with glass type, ornamentation and color (in Chinese)."><img src="assets/figs/thumb/c9_apriori.jpg" alt="Apriori flowchart" loading="lazy"></a><figcaption>Apriori flowchart</figcaption></figure>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <h3>Anchoring New Energy: Policy, Market and the Outlook for China&rsquo;s New-Energy Vehicles</h3>
+    <p class="meta">National Undergraduate Statistical Modeling Contest and National College Student Market Survey and Analysis Contest (Zhengda Cup) &middot; 2022</p>
+    <p class="collab">Statistical Modeling: National Third Prize and Shanghai First Prize &middot; Zhengda Cup: National Third Prize &middot; team of three</p>
+    <p><strong>Problem.</strong> Can new-energy vehicles reach the official target of 20% of new-car sales by 2025, which of six policy levers matter most, and which consumers are most likely to buy?</p>
+    <p><strong>Model.</strong> A national survey with 939 valid responses (90.5% valid), checked for reliability, validity (KMO 0.93&ndash;0.95) and randomness; an ARIMA(0,2,1) forecast of the sales share; a regression of sales share on six policies (subsidies, license plates, driving-restriction exemptions, battery recycling, public charging, purchase-tax exemption); K-means segmentation (K = 5) of 820 potential buyers.</p>
+    <p><strong>Results &amp; contribution.</strong> The forecast share reaches at most 12.9% by 2025, short of the 20% target. Public charging infrastructure is the most significant lever; purchase-tax exemption and the battery white list also raise the share, while subsidies alone fail the significance checks.</p>
+    <details class="figs">
+      <summary>Figures (1)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/c8_framework.jpg" data-full="assets/figs/full/c8_framework.png" data-cap="Research framework: topic selection, design (policy and consumer surveys) and analysis (regression, clustering, text) (in Chinese)."><img src="assets/figs/thumb/c8_framework.jpg" alt="Framework" loading="lazy"></a><figcaption>Framework</figcaption></figure>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <h3>Ordering and Transporting Raw Materials across 402 Suppliers</h3>
+    <p class="meta">China Undergraduate Mathematical Contest in Modeling (CUMCM), Problem C &middot; 2021</p>
+    <p class="collab">Shanghai Second Prize &middot; team of three</p>
+    <p><strong>Problem.</strong> A building-panel maker buying three raw materials from 402 suppliers through 8 transporters must rank its suppliers, find the smallest viable supplier base, and plan 24 weeks of orders and shipments under capacity and transport-loss constraints.</p>
+    <p><strong>Model.</strong> Four supplier-importance indicators from five years of weekly data, weighted by the entropy method and ranked by TOPSIS; time-series forecasts of weekly supply caps and loss rates; 0&ndash;1 integer programs for the minimum supplier set and supplier-to-transporter routing; a genetic algorithm for the cost-minimizing ordering plan.</p>
+    <p><strong>Results &amp; contribution.</strong> Identified the 50 most important suppliers and showed that at least 43 are needed to guarantee 24 weeks of production; supply-cap forecasts reached 94.7% accuracy.</p>
+    <details class="figs">
+      <summary>Figures (2)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/c5_topsis.jpg" data-full="assets/figs/full/c5_topsis.png" data-cap="Problem 1: supply and order data &amp;rarr; indicators &amp;rarr; entropy weights &amp;rarr; TOPSIS &amp;rarr; the 50 most important suppliers (in Chinese)."><img src="assets/figs/thumb/c5_topsis.jpg" alt="Problem 1 approach" loading="lazy"></a><figcaption>Problem 1 approach</figcaption></figure>
+        <figure><a href="assets/figs/view/c5_ga.jpg" data-full="assets/figs/full/c5_ga.png" data-cap="Genetic-algorithm flowchart used to solve the ordering plan (in Chinese)."><img src="assets/figs/thumb/c5_ga.jpg" alt="GA flowchart" loading="lazy"></a><figcaption>GA flowchart</figcaption></figure>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <h3>Who Buys an Electric Vehicle? Feature Selection and Logistic Models of Purchase Intent</h3>
+    <p class="meta">Huashu Cup National Undergraduate Mathematical Modeling Contest, Problem C &middot; 2021</p>
+    <p class="collab">National First Prize</p>
+    <p><strong>Problem.</strong> From a carmaker&rsquo;s survey of 1,964 target customers across three electric-vehicle brands, find the product and customer factors that drive purchase intent, and show how a salesperson could convert undecided customers.</p>
+    <p><strong>Model.</strong> Cleaned and winsorized the survey; ReliefF feature selection by brand over 25 candidate factors (8 satisfaction scores, 17 customer attributes); Pearson screening and forward selection; binary logistic regression by brand.</p>
+    <p><strong>Results &amp; contribution.</strong> 94.7% overall prediction accuracy (99.1% on non-buyers, 87.5% on buyers). Battery and economy satisfaction raise purchase odds while mortgage and car-loan burdens lower them; for one undecided customer, raising battery satisfaction by 5% and power satisfaction by 1.41% flips the prediction to a purchase.</p>
+    <details class="figs">
+      <summary>Figures (1)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/c3_flowchart.jpg" data-full="assets/figs/full/c3_flowchart.png" data-cap="Algorithm flowchart: cleaning, ReliefF feature selection, logistic regression by brand, prediction and sensitivity analysis. Redrawn in English from the paper."><img src="assets/figs/thumb/c3_flowchart.jpg" alt="Algorithm flowchart" loading="lazy"></a><figcaption>Algorithm flowchart</figcaption></figure>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section aria-labelledby="open-source-heading">
+  <h2 id="open-source-heading">Open-Source Projects</h2>
+  <ul class="repos">
+    <li>
+      <span class="repo-name"><a href="https://github.com/Mat-Wong/Business-Academic-Skill" target="_blank" rel="noopener">Business-Academic-Skill</a></span>
+      <p>AI skills for business PhD research in information systems, operations and marketing, built from 1,000+ papers in the UTD journal list: idea planning, paper reading, empirical pipelines, writing, pre-submission audit and typesetting.</p>
+    </li>
+    <li>
+      <span class="repo-name"><a href="https://github.com/Mat-Wong/GRE_guide" target="_blank" rel="noopener">GRE_guide</a></span>
+      <p>Materials from a GRE preparation workshop.</p>
+    </li>
+  </ul>
 </section>
 
 <section aria-labelledby="presentations-heading">
@@ -489,6 +779,12 @@
       <li>Turned a vague &ldquo;marketing intensity&rdquo; judgment into an annotation taxonomy for undisclosed commercial videos; designed the prompts and, with the algorithm team, distilled a teacher LLM into a lightweight detector (90% precision at 70% recall; language coverage of global traffic from 50% to 99%).</li>
       <li>Built agent workflows for human appeal review, cutting review time from 48 to 2 hours and manual work by 60%.</li>
     </ul>
+    <details class="figs">
+      <summary>Figures (1)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/intern_tiktok_llm.jpg" data-full="assets/figs/full/intern_tiktok_llm.png" data-cap="Detection workflow for undisclosed commercial videos. Generic schematic; no internal data."><img src="assets/figs/thumb/intern_tiktok_llm.jpg" alt="Workflow" loading="lazy"></a><figcaption>Workflow</figcaption></figure>
+      </div>
+    </details>
   </div>
 
   <div class="exp-entry">
@@ -501,6 +797,12 @@
       <li>Ran 50+ cross-border and local brand promotions for the Philippine market, selecting core categories by GPM, AOV and CTR and adjusting subsidies by ROAS.</li>
       <li>Coordinated campaign setup with 30+ local account managers and the design team, and helped host a TikTok Shop &times; AIGC closed-door summit in Shenzhen that matched AIGC providers with Philippine merchants.</li>
     </ul>
+    <details class="figs">
+      <summary>Figures (1)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/intern_tiktok_shop.jpg" data-full="assets/figs/full/intern_tiktok_shop.png" data-cap="Promotion workflow: category selection, campaign setup, ROAS review and subsidy tuning. Generic schematic; no internal data."><img src="assets/figs/thumb/intern_tiktok_shop.jpg" alt="Workflow" loading="lazy"></a><figcaption>Workflow</figcaption></figure>
+      </div>
+    </details>
   </div>
 
   <div class="exp-entry">
@@ -513,6 +815,12 @@
       <li>Backtested and tuned CPPI and risk-parity strategies, and tested low-P/B micro-cap funds for excess returns at the 1% significance level.</li>
       <li>Wrote Python tools for fund-research dashboards (A-share liquidity, monthly report extraction, equity fund screening), cutting routine research time by over 90%.</li>
     </ul>
+    <details class="figs">
+      <summary>Figures (1)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/intern_cib_fof.jpg" data-full="assets/figs/full/intern_cib_fof.png" data-cap="Fund-of-funds research workflow: screening, backtests, significance tests and dashboards. Generic schematic; no internal data."><img src="assets/figs/thumb/intern_cib_fof.jpg" alt="Workflow" loading="lazy"></a><figcaption>Workflow</figcaption></figure>
+      </div>
+    </details>
   </div>
 
   <div class="exp-entry">
@@ -525,6 +833,12 @@
       <li>Co-wrote the first in-depth coverage report on Desay SV (002920.SZ), covering its history, organization, main businesses and shareholding structure.</li>
       <li>From three years of filings, news and company posts, identified the firm&rsquo;s declining customer concentration and argued that intelligent driving had become its second growth curve.</li>
     </ul>
+    <details class="figs">
+      <summary>Figures (1)</summary>
+      <div class="fig-grid">
+        <figure><a href="assets/figs/view/intern_haitong.jpg" data-full="assets/figs/full/intern_haitong.png" data-cap="Research workflow for initiating in-depth company coverage. Generic schematic; no internal data."><img src="assets/figs/thumb/intern_haitong.jpg" alt="Workflow" loading="lazy"></a><figcaption>Workflow</figcaption></figure>
+      </div>
+    </details>
   </div>
 
 </section>
@@ -542,7 +856,69 @@
   Last updated: September 2026
 </footer>
 
+<dialog class="lightbox" id="lightbox" aria-label="Figure viewer">
+  <div class="lb-inner">
+    <div class="lb-top">
+      <span id="lb-count"></span>
+      <button type="button" class="lb-btn" id="lb-close">Close</button>
+    </div>
+    <div class="lb-stage">
+      <button type="button" class="lb-btn lb-nav" id="lb-prev" aria-label="Previous figure">&lsaquo;</button>
+      <img id="lb-img" alt="">
+      <button type="button" class="lb-btn lb-nav" id="lb-next" aria-label="Next figure">&rsaquo;</button>
+    </div>
+    <div class="lb-bottom">
+      <p class="lb-cap" id="lb-cap"></p>
+      <a class="lb-dl" id="lb-dl" href="#" download>Download high-res (PNG)</a>
+    </div>
+  </div>
+</dialog>
+
 <script>
+(function () {
+  var dlg = document.getElementById('lightbox');
+  if (!dlg || typeof dlg.showModal !== 'function') return; // links still open the image directly
+  var img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap'),
+      dl = document.getElementById('lb-dl'), cnt = document.getElementById('lb-count'),
+      prev = document.getElementById('lb-prev'), next = document.getElementById('lb-next');
+  var group = [], idx = 0;
+  function show(i) {
+    idx = i; var a = group[i];
+    img.src = a.getAttribute('href');
+    img.alt = a.querySelector('img').alt;
+    cap.innerHTML = a.getAttribute('data-cap');
+    dl.href = a.getAttribute('data-full');
+    dl.setAttribute('download', a.getAttribute('data-full').split('/').pop());
+    cnt.textContent = group.length > 1 ? (i + 1) + ' / ' + group.length : '';
+    prev.disabled = i === 0; next.disabled = i === group.length - 1;
+    prev.hidden = next.hidden = group.length < 2;
+  }
+  document.querySelectorAll('.fig-grid a').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      group = Array.prototype.slice.call(a.closest('.fig-grid').querySelectorAll('a'));
+      show(group.indexOf(a));
+      dlg.showModal();
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  prev.addEventListener('click', function () { if (idx > 0) show(idx - 1); });
+  next.addEventListener('click', function () { if (idx < group.length - 1) show(idx + 1); });
+  document.getElementById('lb-close').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('close', function () { document.body.style.overflow = ''; img.removeAttribute('src'); });
+  dlg.addEventListener('click', function (e) { if (e.target.classList.contains('lb-stage') || e.target === dlg) dlg.close(); });
+  var x0 = null;
+  dlg.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  dlg.addEventListener('touchend', function (e) {
+    if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (dx > 50 && idx > 0) show(idx - 1);
+    if (dx < -50 && idx < group.length - 1) show(idx + 1);
+  });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft' && idx > 0) show(idx - 1);
+    if (e.key === 'ArrowRight' && idx < group.length - 1) show(idx + 1);
+  });
+})();
 document.querySelectorAll('.email-link').forEach(function (a) {
   a.addEventListener('click', function () {
     var addr = 'mat0728@stu.pku.edu.cn';
