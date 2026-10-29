@@ -500,7 +500,7 @@
 <section class="about" aria-labelledby="about-heading">
   <h2 id="about-heading">About</h2>
   <p><strong>Research interests:</strong> AI for business, using large language models (supervised fine-tuning and reinforcement learning), deep learning and machine learning to study decisions on platforms and in markets.</p>
-  <p>I study how AI and human experts should share judgment in platform decisions: LLM pipelines that separate verifiable evidence from the final decision, and that learn from disagreeing reviewers instead of averaging them away. A second line measures what markets learn from how firms present themselves, using speech, text, faces and scenes. In a PhD, I aim to design and evaluate human&ndash;AI decision systems in business and information systems.</p>
+  <p>I study how AI and human experts should share judgment in platform decisions: LLM pipelines that separate verifiable evidence from the final decision, and that learn from disagreeing reviewers instead of averaging them away. A second line measures what markets learn from how executives sound, turning many raw acoustic signals into theory-guided, interpretable factors. In a PhD, I aim to design and evaluate human&ndash;AI decision systems in business and information systems.</p>
 </section>
 
 <section aria-labelledby="news-heading">
@@ -536,16 +536,16 @@
   </div>
 
   <div class="card">
-    <h3>Seeing and Hearing the Pitch: Multimodal Signals in IPO Roadshows and Underpricing</h3>
+    <h3>Seeing and Hearing the Pitch: Executive Vocal Cues in IPO Roadshows and Underpricing</h3>
     <p class="meta">Jul 2026 &ndash; Present</p>
     <p class="collab">Advisor: <a href="https://kpzhang.github.io/" target="_blank" rel="noopener">Kunpeng Zhang</a>, University of Maryland and <a href="https://robinson.gsu.edu/profile/yusen-xia/" target="_blank" rel="noopener">Yusen Xia</a>, Georgia State University</p>
-    <p><strong>Problem.</strong> Does how executives present in IPO roadshows, beyond the prospectus, carry information the market prices?</p>
-    <p><strong>Model.</strong> Built a corpus of 600 STAR Market roadshows (599 firms, 18,560 sentences) with timestamped speech recognition, LDA topic segmentation, and sentence-aligned acoustic, facial, gesture and scene features; screened 749 features against 8 underpricing measures with time-based splits and global FDR control.</p>
-    <p><strong>Results &amp; contribution.</strong> The chairman's time share on technology and R&amp;D content is the only presentation feature that survives global correction (r = &minus;0.16, q = 0.03), with the same sign before and after the 2023 IPO tightening; dispersion of investor questions in the online Q&amp;A raises out-of-sample R&sup2; from 0.091 to 0.128. Ongoing.</p>
+    <p><strong>Problem.</strong> Beyond fundamentals and prospectus text, does how a chairman sounds in an IPO roadshow shape how new shares are priced? Single acoustic measures map poorly onto how a speaker is perceived, so the first task is measurement.</p>
+    <p><strong>Model.</strong> Built a corpus of STAR Market roadshow videos (2019&ndash;2026; 597 firms) with speech recognition and topic segmentation into opening remarks and substantive content. Guided by speech-emotion research, reduced 20 acoustic measures to four interpretable latent factors (valence, intensity, pitch and timbre) by factor analysis, checked with PCA and audio-LLM listening tests.</p>
+    <p><strong>Results &amp; contribution.</strong> To our knowledge, this is the first study to link within-speaker shifts in theory-guided acoustic factors to IPO underpricing. Linear effects are null. The squared shift in pitch from opening remarks to substantive content raises underpricing, and valence dampens it (1% level; listing-week clustered standard errors, year and industry fixed effects, U-test). The effect sits entirely in issue-to-open returns, not intraday returns, pointing to information uncertainty rather than first-day sentiment. Mechanism and identification tests are ongoing.</p>
     <details class="figs">
       <summary>Figures (1)</summary>
       <div class="fig-grid">
-        <figure><a href="assets/figs/view/ipo_pipeline.jpg" data-full="assets/figs/full/ipo_pipeline.png" data-cap="Data and modeling pipeline: roadshow video and online Q&amp;amp;A to sentence-aligned multimodal features, screened against IPO underpricing. Schematic only; results are not shown while the project is ongoing."><img src="assets/figs/thumb/ipo_pipeline.jpg" alt="Pipeline" loading="lazy"></a><figcaption>Pipeline</figcaption></figure>
+        <figure><a href="assets/figs/view/ipo_pipeline.jpg" data-full="assets/figs/full/ipo_pipeline.png" data-cap="Data and modeling pipeline: roadshow video to topic-segmented chairman speech, four latent acoustic factors and nonlinear models of IPO underpricing. Schematic only."><img src="assets/figs/thumb/ipo_pipeline.jpg" alt="Pipeline" loading="lazy"></a><figcaption>Pipeline</figcaption></figure>
       </div>
     </details>
   </div>
