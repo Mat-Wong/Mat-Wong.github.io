@@ -535,9 +535,9 @@ During my Ph.D. studies, I aim to design, train, and evaluate tailored LLM archi
     <h3>Collusion in the Cards: AI Detection and Explanation with LLMs</h3>
     <p class="meta">Feb 2026 – Present</p>
     <p class="collab">Advisor: <a href="https://kanxu526.github.io/" target="_blank" rel="noopener">Kan Xu</a>, Arizona State University</p>
-    <p><strong>Problem.</strong> Online card-game platforms must adjudicate collusion reports case by case: every move can be legal while coordinated intent surfaces only across the sequence. Labels come from 171 volunteer reviewers who disagree on 39% of 8,553 games, and an 84% positive prior makes accuracy uninformative.</p>
-    <p><strong>Model.</strong> Designed VERA, a Qwen2.5-7B architecture that separates evidence from judgment: a rule-grounded analyst (rule-cloze SFT, then distillation on 501 teacher-annotated games) reconstructs each game from the log alone, while the player report bypasses it and enters a trained adjudicator. Proposed reviewer-aware weighted SFT: a cross-attention network over game, report and review embeddings, reviewer histories and vote structure learns a positive weight for each training case.</p>
-    <p><strong>Results &amp; contribution.</strong> On 500 test and 1,000 out-of-sample cases, VERA reaches 0.491 and 0.492 MCC, against 0.343 and 0.245 for a prompted frontier model and 0.424 and 0.420 for the best embedding classifier. Analysis helps only once the adjudicator is task-trained; reviewer weighting gains most out of sample, and needs no human review at inference.</p>
+    <p><strong>Problem.</strong> Online card-game platforms must adjudicate collusion reports case by case: every move can be legal while coordinated intent surfaces only across the sequence. Labels come from volunteer reviewers who often disagree, and a heavily skewed positive prior makes accuracy uninformative.</p>
+    <p><strong>Model.</strong> Designed VERA, a Qwen2.5-7B architecture that separates evidence from judgment: a rule-grounded analyst (rule-cloze SFT, then distillation on teacher-annotated games) reconstructs each game from the log alone, while the player report bypasses it and enters a trained adjudicator. Proposed reviewer-aware weighted SFT: a cross-attention network over game, report and review embeddings, reviewer histories and vote structure learns a positive weight for each training case.</p>
+    <p><strong>Results &amp; contribution.</strong> On held-out test and out-of-sample cases, VERA reaches 0.491 and 0.492 MCC, against 0.343 and 0.245 for a prompted frontier model and 0.424 and 0.420 for the best embedding classifier. Analysis helps only once the adjudicator is task-trained; reviewer weighting gains most out of sample, and needs no human review at inference.</p>
     <details class="figs">
       <summary>Figures (3)</summary>
       <div class="fig-grid">
@@ -724,7 +724,7 @@ During my Ph.D. studies, I aim to design, train, and evaluate tailored LLM archi
   <ul class="honors-list">
     <li><span>First Prize (top 0.13%), Student Category, AEJMC 108th Annual Conference</span><span class="honor-year">2025</span></li>
     <li><span>First-Class Scholarship, Peking University HSBC Business School</span><span class="honor-year">2024</span></li>
-    <li><span>National Scholarship, Ministry of Education of China</span><span class="honor-year"></span></li>
+    <li><span>National Scholarship, Ministry of Education of China</span><span class="honor-year">2022</span></li>
     <li><span>Shanghai Excellent Graduate</span><span class="honor-year">2024</span></li>
     <li><span>SUFE Outstanding Graduation Thesis (top 2%)</span><span class="honor-year">2024</span></li>
     <li><span>Third Prize (top 1.35%), 13th National Undergraduate Economics Annual Conference</span><span class="honor-year">2022</span></li>
@@ -757,8 +757,8 @@ During my Ph.D. studies, I aim to design, train, and evaluate tailored LLM archi
       <h3>Shanghai University of Finance and Economics (SUFE)</h3>
       <span class="dates">Sep 2020 – Jun 2024</span>
     </div>
-    <p class="entry-sub">B.A. in Economic Statistics · Shanghai, China</p>
-    <p>Rank 1/107; GPA 3.76/4.00. National Scholarship; Shanghai Excellent Graduate. IELTS 7.0.</p>
+    <p class="entry-sub">B.S. in Economic Statistics · Shanghai, China</p>
+    <p>Rank 1/107; GPA 3.76/4.00. National Scholarship (2022); Shanghai Excellent Graduate.</p>
   </div>
 </section>
 
